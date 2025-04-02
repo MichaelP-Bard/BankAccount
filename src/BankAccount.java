@@ -1,7 +1,7 @@
 /**
- * Description: Bank Account Management System
- * This program implements a simple bank account with deposit, withdrawal,
- * and statement tracking functionality using StringBuilder and Calendar.
+ * Description: Bank Account Management System Group Lab 4
+ * This program implements a bank account with deposit, withdrawal,
+ * and statement functionality using  Calendar method.
  * @author Michael Polk
  * @author Berk Enul
  * Date: April 01, 2025
