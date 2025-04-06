@@ -29,8 +29,8 @@ public class BankAccount {
     }
 
     /**
-     * Overloaded constructor - initializes account with specified balance
-     * @param initialBalance The initial amount to deposit
+     * Overloaded constructor - initializes account withbalance
+     * @param initialBalance The initial amount deposited
      */
     public BankAccount(double initialBalance) {
         this.accountNumber = nextAccountNumber++;
@@ -41,20 +41,23 @@ public class BankAccount {
             deposit(initialBalance);
         }
     }
-/**
+
+    /**
      * Records a transaction with a timestamp.
-     * @param type The type of transaction (e.g., Deposit, Withdraw)
-     * @param amount The amount involved in the transaction
+     * @param type The type of transaction 
+     * @param amount The amount of the transaction
      */
     private void recordTransaction(String type, double amount) {
         Calendar calendar = Calendar.getInstance();
         String timestamp = dateFormat.format(calendar.getTime());
         transactions.append(type)
-                    .append(": $")
-                    .append(String.format("%.2f", amount))
-                    .append(" on ")
-                    .append(timestamp)
-                    .append("\n");
+                .append(": $")
+                .append(String.format("%.2f", amount))
+                .append(" on ")
+                .append(timestamp)
+                .append("\n");
+        transactions.append(String.format("%s | %-12s | $%8.2f | Balance: $%8.2f%n",
+                timestamp, type, amount, balance));
     }
 
     /**
@@ -99,9 +102,16 @@ public class BankAccount {
      */
     public String getStatement() {
         return transactions.toString();
+
+    }
+
+    /**
+     * Returns the account number.
+     * @return The account number
+     */
+    public int getAccountNumber() {
+        return accountNumber;
     }
 }
-
-
 
 
