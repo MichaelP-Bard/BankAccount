@@ -41,5 +41,65 @@ public class BankAccount {
             deposit(initialBalance);
         }
     }
+      /**
+ * Records a transaction with a timestamp.
+ * @param type The type of transaction (e.g., Deposit, Withdraw)
+ * @param amount The amount involved in the transaction
+ */
+private void recordTransaction(String type, double amount) {
+    Calendar calendar = Calendar.getInstance();
+    String timestamp = dateFormat.format(calendar.getTime());
+    transactions.append(type)
+                .append(": $")
+                .append(String.format("%.2f", amount))
+                .append(" on ")
+                .append(timestamp)
+                .append("\n");
+}
+
+/**
+ * Deposits a positive amount into the account.
+ * @param amount The amount to deposit
+ */
+public void deposit(double amount) {
+    if (amount > 0) {
+        balance += amount;
+        recordTransaction("Deposit", amount);
+    } else {
+        System.out.println("Deposit amount must be positive.");
+    }
+}
+
+/**
+ * Withdraws a specified amount if sufficient balance exists.
+ * @param amount The amount to withdraw
+ */
+public void withdraw(double amount) {
+    if (amount > 0 && amount <= balance) {
+        balance -= amount;
+        recordTransaction("Withdraw", amount);
+    } else if (amount <= 0) {
+        System.out.println("Withdraw amount must be positive.");
+    } else {
+        System.out.println("Insufficient balance.");
+    }
+}
+
+/**
+ * Returns the current account balance.
+ * @return The current balance
+ */
+public double getBalance() {
+    return balance;
+}
+
+/**
+ * Returns the transaction history.
+ * @return All recorded transactions
+ */
+public String getStatement() {
+    return transactions.toString();
+}
+}
 
 
