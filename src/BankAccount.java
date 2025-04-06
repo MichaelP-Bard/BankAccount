@@ -102,4 +102,26 @@ public String getStatement() {
 }
 }
 
+    /**
+     * Returns statement of all transactions
+     * @return String containing all transactions
+     */
+    public String getStatement() {
+        return "Account #" + accountNumber + " Transaction History:\n" +
+                transactions.toString() +
+                "Current Balance: $" + String.format("%.2f", balance) + "\n";
+    }
+
+    /**
+     * Records a transaction with timestamp
+     * @param type The type of transaction
+     * @param amount The transaction amount
+     */
+    private void recordTransaction(String type, double amount) {
+        String timestamp = dateFormat.format(Calendar.getInstance().getTime());
+        transactions.append(String.format("%s | %-12s | $%8.2f | Balance: $%8.2f%n",
+                timestamp, type, amount, balance));
+    }
+}
+
 
